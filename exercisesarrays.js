@@ -5,5 +5,3 @@
 const tareas = ['limpiar', 'recoger', 'comprar'];
 console.log(typeof tareas);
 console.log(Array .isArray(tareas))    
-
-// hola es una prueba
