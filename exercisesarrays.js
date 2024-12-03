@@ -83,9 +83,6 @@ vehicle.forEach(function(ruperto){
   console.log(taskIncompleted)
 
 
-
-
-
 /*
   3. Imagina que estás en un supermercado haciendo la compra y tienes que comprar lo que está 
   en la variable shoppingList.
@@ -114,5 +111,122 @@ function itemBought(list, itemToRemove) {
 }
 itemBought(list, 'pepino')
 console.log(itemBought)
+
+
+
+// ejercicios casa
+
+/*
+  1. Dado el siguiente carrito de la compra, calcular el precio total y mostrarlo por pantalla con console.log
+*/
+const shoppingCart = [
+	{ product: 'Red wine', price: 20, quantity: 1},
+  { product: 'water', price: 1, quantity: 2 },
+  { product: 'Pizza carbonara', price: 10, quantity: 3 },
+  { product: 'Tiramisú', price: 5.99, quantity: 2 }
+]
+let totalPrice = 0;
+
+shoppingCart.forEach(function(product, index) {
+  totalPrice = totalPrice + product.price * product.quantity;
+})
+console.log(totalPrice);
+
+
+/*
+  2. Crea un array que contenga un listado de tareas. Las tareas tienen un texto y pueden estar completadas o pendientes. A continuación filtra el array para mostrar todas las 
+  tareas que están completadas y luego todas las tareas que están pendientes.
+*/
+// hacer
+
+const taskList = [
+  { tarea1: 'recoger',
+    completed: true,
+ }, 
+  { tarea2: 'limpiar', 
+    completed: false,
+ }, 
+ { tarea3: 'comprar',
+   completed: true,
+ } 
+ ];
+ 
+ 
+ const taskIncompleted = []
+ 
+ taskList.forEach(function(task){   // ruperto es el nombre del objeto
+   console.log(task)
+   if (!task.completed)
+     taskIncompleted.push(task)
+     
+   })
+   console.log(taskIncompleted)
+
+/*
+ 3. Dado el listado de frutas que ponemos a continuación, recórrelo y crea otro array de igual longitud donde en cada elemento, aparezca el nombre de la fruta y si crece o no en un árbol.
+   - Las que crecen en los árboles son las manzanas, las peras, las granadas y los plátanos.
+*/
+
+
+// crear un array de objetos donde tengan nombre de la fruta y se crece en un arbol o no
+
+// Vamos a decirle que recorra el array
+// Por cada elemento del array nos crea un objeto con nombre de la fruta
+// Por cada objeto debe añadir el valor growsOnTree: false o true
+
+const frutas = ['manzana', 'pera', 'granada', 'platano', 'uva', 'melon', 'sandia'];
+
+const frutasArbol = frutas.map(fruta => {
+  const esArbol = fruta !== 'uva' &&  fruta !== 'melon' &&  fruta !== 'sandia';  // esto se puede simplificar?
+  return { name: fruta, esArbol };
+})
+console.log(frutasArbol);
+
+/* 
+   4. Dado el carrito de la compra del ejercicio 1, transforma ese array en otro que contenga además los impuestos. Por ejemplo, el primer elemento será:
+	  { product: 'Red wine', price: 20, quantity: 1, taxes: 2 }
+
+   Asumiremos que los impuestos son el 10% del precio total del producto.
+
+   PD: La idea es que recorras el array original y lo transformes en otro con esa propiedad.
+*/
+const shoppingCart2 = [
+	{ product: 'Red wine', price: 20, quantity: 1},
+  { product: 'water', price: 1, quantity: 2 },
+  { product: 'Pizza carbonara', price: 10, quantity: 3 },
+  { product: 'Tiramisú', price: 5.99, quantity: 2 }
+]
+
+shoppingCart2.forEach(product => {
+  const tax = (product.price * product.quantity) * 0.1;
+   return product.tax = tax;  // hace falta return?
+})
+console.log(shoppingCart2)
+
+/*
+   5. Dado el carrito de la compra del ejercicio 1, implementa una función que permita eliminar una unidad de producto del carrito de la compra basándose 
+   en el nombre del producto. Por ejemplo, si la función se invoca con "Red wine", el array debe eliminar ese elemento de la lista porque solo hay 1, pero si se invoca con
+   "Tiramisú", simplemente se restará uno a la propiedad quantity de ese elemento.
+*/
+const shoppingCart3 = [
+	{ product: 'Red wine', price: 20, quantity: 1},
+  { product: 'water', price: 1, quantity: 2 },
+  { product: 'Pizza carbonara', price: 10, quantity: 3 },
+  { product: 'Tiramisú', price: 5.99, quantity: 2 }
+]
+
+function buyedProduct(prodName, cart) {
+  const product = cart.find(item => item.product === prodName);
+
+
+  if (product.quantity > 1) {
+    product.quantity - 1;
+  } else {
+    const index = cart.indexOf(product);
+    cart.splice(index, 1);
+  }
+}
+console.log('Red wine', shoppingCart3);
+
 
 
