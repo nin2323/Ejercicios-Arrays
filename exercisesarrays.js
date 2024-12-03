@@ -154,7 +154,7 @@ const taskList = [
  
  const taskIncompleted = []
  
- taskList.forEach(function(task){   // ruperto es el nombre del objeto
+ taskList.forEach(function(task){   
    console.log(task)
    if (!task.completed)
      taskIncompleted.push(task)
@@ -177,8 +177,8 @@ const taskList = [
 const frutas = ['manzana', 'pera', 'granada', 'platano', 'uva', 'melon', 'sandia'];
 
 const frutasArbol = frutas.map(fruta => {
-  const esArbol = fruta !== 'uva' &&  fruta !== 'melon' &&  fruta !== 'sandia';  // esto se puede simplificar?
-  return { name: fruta, esArbol };
+  const isTree = fruta !== 'uva' &&  fruta !== 'melon' &&  fruta !== 'sandia';  // esto se puede simplificar?
+  return { name: fruta, isTree };
 })
 console.log(frutasArbol);
 
@@ -218,15 +218,13 @@ const shoppingCart3 = [
 function buyedProduct(prodName, cart) {
   const product = cart.find(item => item.product === prodName);
 
-
   if (product.quantity > 1) {
     product.quantity - 1;
   } else {
     const index = cart.indexOf(product);
-    cart.splice(index, 1);
+    cart.splice(index);
   }
 }
-console.log('Red wine', shoppingCart3);
-
+console.log('Water', shoppingCart3);
 
 
