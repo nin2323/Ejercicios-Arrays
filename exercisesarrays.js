@@ -215,7 +215,7 @@ const shoppingCart3 = [
   { product: 'Tiramisú', price: 5.99, quantity: 2 }
 ]
 
-function buyedProduct(prodName, cart) {
+/* function buyedProduct(prodName, cart) {
   const product = cart.find(item => item.product === prodName);
 
   if (product.quantity > 1) {
@@ -225,6 +225,101 @@ function buyedProduct(prodName, cart) {
     cart.splice(index);
   }
 }
-console.log('Water', shoppingCart3);
+console.log('Water', shoppingCart3);*/
 
+function buyedProduct(prodName, cart) {
+  const product = cart.forEach(function(item, index){
+    if (item.product !== productName) {
+      prodNameCopy.push(item);
+      return;
+    }
+    if (item.quantity === 1) {
+      return;
+    }
+    prodNameCopy
+  })
+}
+
+
+/* Lo que tiene que hacer esa función es recorrer el array que queramos filtrar, y para cada elemento comprobar si devuelve las condiciones. Si es así, el elemento se guardará en otro array que solo tendrá los elementos filtrados.
+
+Después de recorrer la función, devolveremos el array filtrado. 
+
+
+La función aceptará dos parámetros:
+El primero será el array que queramos filtrar
+El segundo será una función que se llamará para cada elemento del array a filtrar y que debe devolver true o false . Esta segunda función aceptará a su vez dos parámetros: el elemento del array (aka ruperto) y el índice que ocupa.*/
+
+function filterArray(array, filterFunction) {
+  const filteredArray = [];
+  array.forEach(function(arrayItem, index){
+    if (filterFunction(arrayItem, index)) {
+      filteredArray.push(arrayItem);
+    } 
+  }) 
+    return filteredArray;
+  }
+
+
+const tasks = [
+  { text: 'hacer deberes', isCompleted: true },
+  { text: 'hacer funcion dentro de funcion', isCompleted: false }
+];
+
+function isTaskCompleted(task, index) {
+  console.log('Comprobando tarea con índice', index);
+
+  return task.isCompleted;
+}
+
+const completedTasks = filterArray(tasks, isTaskCompleted);
+console.log(completedTasks);
+
+const cars = [
+  { color: 'blue', doors: 4 },
+  { color: 'red', doors: 5 }
+];
+
+function isRedCar(color, index) {
+  console.log('Comprobando color', index);
+
+  return color.cars;
+}
+
+const colorRed = filterArray(color, isRedCar);
+console.log(colorRed);
+
+
+// filtrar las frutas que no crecen en un arbol
+
+/*const fruits = ['manzana', 'pera', 'granada', 'plátano', 'uva', 'melón', 'sandía'];
+const fruitsComplete = [];
+
+fruits.forEach(function (fruitName) {
+  fruitsComplete.push({
+    name: fruitName,
+    growInTree: fruitName === 'manzana' || fruitName === 'pera' || fruitName === 'granada' || fruitName === 'plátano'
+  });
+})
+
+const filterOnTree = fruitsComplete.filter(function(fruitInfo) { 
+  return fruitInfo.grouInTree;
+})
+console.log(filterOnTree);*/
+
+
+
+const fruits = ['manzana', 'pera', 'granada', 'plátano', 'uva', 'melón', 'sandía'];
+
+const fruitsComplete = fruits.map(function (fruitName) {
+  return {
+    name: fruitName,
+    growInTree: fruitName === 'manzana' || fruitName === 'pera' || fruitName === 'granada' || fruitName === 'plátano'
+  };
+});
+
+const fruitsFound = fruits.find(function(fruitName) {
+  return !fruitName.growInTree
+})
+console.log(fruitsComplete)
 
