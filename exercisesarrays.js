@@ -323,3 +323,56 @@ const fruitsFound = fruits.find(function(fruitName) {
 })
 console.log(fruitsComplete)
 
+
+// Kata
+// wave("hello") => ["Hello", "hEllo", "heLlo", "helLo", "hellO"]
+// tenemos un string
+// tiene que salir un array con la misma longitud
+// crear una variable con el array de salida 
+// pasar el string de entrada a un array de carateres
+// por cada caracter miramos su indice 
+// creamos una variable de texto con el valor original cambiando el caracter original a mayuscula 
+
+function wave(str) {
+  const result = [];
+  const characters = str.split('');
+
+  characters.forEach(function(char, index){
+    if(char === ' '){
+      return;
+    }
+  const charactersCopy = [...characters];
+  charactersCopy[index] = char.toUpperCase();
+    result.push(charactersCopy.join(''));
+  })
+ console.log(result)
+}
+wave('hello');
+console.log(wave('h e l l o'));
+
+// otra forma de hacerlo
+
+function wave(str){
+  const result = [];
+  const characters = str.split('');
+  
+  characters.forEach(function(char, index){
+    characters[index] = char.toUpperCase();
+    result.push(characters.join(''))
+    characters[index] = char;
+  })
+  console.log(result)
+  }
+  
+  wave('hello')
+
+
+
+// kata
+
+function countSmileys(arr) {
+
+}
+
+
+
