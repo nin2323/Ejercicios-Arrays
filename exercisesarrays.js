@@ -345,7 +345,7 @@ function wave(str) {
   charactersCopy[index] = char.toUpperCase();
     result.push(charactersCopy.join(''));
   })
- console.log(result)
+ console.log(result);
 }
 wave('hello');
 console.log(wave('h e l l o'));
@@ -364,15 +364,39 @@ function wave(str){
   console.log(result)
   }
   
-  wave('hello')
+  console.log(wave('hello'))
 
 
 
 // kata
 
+/* Dado un array (arr) como argumento complete la función countSmileys que debe devolver el número total de caras sonrientes.
+
+Reglas para una cara sonriente:
+
+ - Cada cara sonriente debe contener un par de ojos válido. Los ojos pueden estar marcados como : o ;
+ - Una carita sonriente puede tener nariz, pero no es obligatorio. Los caracteres válidos para la nariz son - o ~.
+ - Toda cara sonriente debe tener una boca sonriente que debe marcarse con ) o D
+ - No se permiten caracteres adicionales excepto los mencionados.
+*/
+
 function countSmileys(arr) {
+  const simileys = [':)', ':D', ':-)', ':-D', ':~)', ':~D', ';)', ';D', ';-)', ';-D', ';~)', ';~D'];
+  let numSmiles = 0;
 
+  arr.forEach(function(char, index){
+    if (simileys.includes(char)) {
+      numSmiles = numSmiles + 1;
+    }; 
+  });
+  return numSmiles;
 }
+console.log(countSmileys(['','MECAGOENTUPUTAMADREPUTASKATASDEMIERDA','']));
 
+// primer char= : o ;
+// segundo char = -, ~, ), D
+// tercer char = ), D
+
+// Si el str tiene 2 characteres significa que no tiene nariz
 
 
