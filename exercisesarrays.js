@@ -391,7 +391,7 @@ function countSmileys(arr) {
   });
   return numSmiles;
 }
-console.log(countSmileys(['','MECAGOENTUPUTAMADREPUTASKATASDEMIERDA','']));
+console.log(countSmileys(['','','']));
 
 // primer char= : o ;
 // segundo char = -, ~, ), D
