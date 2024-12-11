@@ -380,18 +380,68 @@ Reglas para una cara sonriente:
  - No se permiten caracteres adicionales excepto los mencionados.
 */
 
-function countSmileys(arr) {
+/*function countSmileys(arr) {
   const simileys = [':)', ':D', ':-)', ':-D', ':~)', ':~D', ';)', ';D', ';-)', ';-D', ';~)', ';~D'];
   let numSmiles = 0;
 
-  arr.forEach(function(char, index){
+  arr.forEach(function(char){
     if (simileys.includes(char)) {
       numSmiles = numSmiles + 1;
     }; 
   });
   return numSmiles;
 }
-console.log(countSmileys(['','','']));
+console.log(countSmileys([':)','X-)',':-D']));*/
+
+
+function countSmileys(arr) {
+  let smileysNum = 0;
+
+  arr.forEach(function (face) {
+    if (face.length === 2) {
+      if ((face[0] === ':' || face[0] === ';') && (face[1] === ')' || face[1] === 'D')) {
+        smileysNum += 1;
+      }
+    }
+
+    if (face.length === 3) {
+      if (
+        (face[0] === ':' || face[0] === ';') &&
+        (face[1] === '-' || face[1] === '~') &&
+        (face[2] === ')' || face[2] === 'D')
+      ) {
+        smileysNum += 1;
+      }
+    }
+  });
+
+  return smileysNum;
+}
+
+
+function countSmileys(arr) {
+  let smileysNum = 0;
+
+  const validSmiles = arr.map(function(face) {
+    if (face.length === 2) {
+      if ((face === ':' || face === ';') && (face === ')' || face === 'D')) {
+        return true;
+      }
+    }
+
+    if (face.length === 3 
+        (face[0] === ':' || face[0] === ';') &&
+        (face[1] === '-' || face[1] === '~') &&
+        (face[2] === ')' || face[2] === 'D')
+    ) {
+        return true;
+      }
+        return false;
+    }
+  });
+
+  return validSmiles.length;
+}
 
 // primer char= : o ;
 // segundo char = -, ~, ), D
@@ -400,3 +450,41 @@ console.log(countSmileys(['','','']));
 // Si el str tiene 2 characteres significa que no tiene nariz
 
 
+
+// kata 
+
+function openOrSenior(data){
+  return data.map(function(memberInfo){
+    const age = memberInfo[0];
+    const handicap = memberInfo [1];
+
+    if (age >= 55 && handicap > 7) {
+      return 'Senior';
+    } return 'Open';
+  })
+}
+console.log(openOrSenior([58, 8]));
+
+
+
+// Ternarios 
+
+/** Crear una función que, dados dos parámetros, name y age:
+ * Si name y age tienen un valor devolveremos Hola me llamo [NAME] y tengo [AGE] años
+ * Si age no tiene valor pero name si devolveremos Hola me llamo [NAME]
+ * Si ninguno tiene valor devolvermos No quiero decirte mi nombre, pringao
+ */
+
+const nameAndAge = (name, age) => {
+  if (name !== undefined && age !== undefined) {
+    return `Hola me llamo ${name} y tengo ${age} años`
+  } else if (name !== undefined && age === undefined) {
+    return `Hola me llamo ${name}`
+  } return 'No quiero decirte mi nombre, pringao';
+}
+console.log(nameAndAge( ));
+
+
+const nameAndAge1 = (name, age) => {
+
+}
