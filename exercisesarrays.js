@@ -477,14 +477,99 @@ console.log(openOrSenior([58, 8]));
 
 const nameAndAge = (name, age) => {
   if (name !== undefined && age !== undefined) {
-    return `Hola me llamo ${name} y tengo ${age} años`
+    return `Hola me llamo ${name} y tengo ${age} años`;
   } else if (name !== undefined && age === undefined) {
-    return `Hola me llamo ${name}`
+    return `Hola me llamo ${name}`;
   } return 'No quiero decirte mi nombre, pringao';
 }
 console.log(nameAndAge( ));
 
+// Ternario
 
 const nameAndAge1 = (name, age) => {
+  if (name !== undefined && age !== undefined) {
+    return `Hola me llamo ${name} y tengo ${age} años`;
+  }
+    return name && !age ? `Hola me llamo ${name}` : 'No quiero decirte mi nombre, pringao';
+  } 
+  console.log(nameAndAge1());
 
+
+
+// bucle For
+
+/**
+ * Escribe una función que dado un número, escriba su tabla de multiplicar en consola
+ * Por ejemplo si le digo 1 debe escribir:
+ *  1 x 1 = 1
+ *  1 x 2 = 2
+ *  .........
+ */
+
+function table(num){
+  for(let multiplicando = 1; multiplicando <=10; multiplicando++) {
+   
+    console.log(`${num} x ${multiplicando} = ${num * multiplicando}`);
+  }
 }
+table(1);
+
+
+
+/**
+ * Haz una función que dado un número, escriba todos los números pares desde el 0 al número introducido. 
+ * Por ejemplo si introduzco 6, mostrará:
+ *  0
+ *  2
+ *  4
+ *  6
+ */
+
+const numPar = (num) => {
+  for(let par = 0; par <= 6; par++) {
+    if(par % 2 === 0)   
+    console.log(par)
+  }
+}
+numPar(6);
+
+/**
+ * Cambia la función anterior para no usar condicionales
+ */
+
+const numPar1 = (num) => {
+  for(let par = 0; par <= num; par+= 2) {   
+    console.log((par));
+  }
+};
+numPar1(6);
+
+
+/** Haz una función que, dado un número, escriba una cuenta atrás de ese número en pantalla.
+ * Por ejemplo, si introduzco 3, escribirá:
+ * 3
+ * 2
+ * 1
+ * 0
+ */
+
+const countDown = (num) => {
+  for (let numero = num; numero >= 0; numero--) {
+    console.log(numero)
+  }
+}
+countDown(3);
+
+/**
+ * Escribe una función que acepte una letra y un número, y el programa mostrará una cadena formada por la letra repetida el número que haya introducido.
+ */
+
+const cadena = (letter) => {
+  for(let param = 0; param = 5; param++) {
+    console.log(letter * param)
+  }
+}
+cadena('h');
+
+
+
