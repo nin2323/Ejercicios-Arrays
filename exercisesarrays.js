@@ -619,7 +619,7 @@ const shoppingCart5 = [
     shoppingCart5.forEach(product => {
       if (country === 'España' && (state !== 'Ceuta' && state !== 'Melilla' && state !== 'Canarias')) {
         let totalPrice = (product.cuantity * product.price);
-        let priceWithTax = (product.cuantity * product.price) * 1.21;
+        let priceWithTax = (product.cuantity * product.price) * 0.21;
         return product.totalPrice = totalPrice, product.priceWithTax = priceWithTax; 
       }  else if (state === 'Ceuta' || state === 'Melilla' || state === 'Canarias') {
         let totalPrice = (product.cuantity * product.price);
@@ -665,12 +665,14 @@ const shoppingCart5 = [
   {product: 'tofu ahumado', cuantity: 28, price: 79.39}
 ];
 
-const applyCoupon = (cupon, carrito) => {
+const applyCoupon = ( carrito) => {
   /* Obtener el precio total de cada item */
-  carrito.forEach(product => {
+  shoppingCart6.forEach(product => {
     let totalPrice = (product.cuantity * product.price);
     return product.totalPrice = totalPrice;
   })
+
+  
   
   /* Obtener el precio total del carrito en un nuevo array */
   let totalPriceCart = 0;
@@ -720,4 +722,48 @@ const shippingCost = (country, state) => {
   }
 )}
 console.log(shippingCost('España', 'Murcia'));
+
+
+
+
+
+
+// kata
+
+function order(words){
+  const sortedWords = [];
+
+   words.split(' ').forEach(word => {   // dejar un espacio den el .split (' ')
+    const number = word.split('').find(char => {
+      return Number(char);
+    });
+    sortedWords[number-1] = word;
+   })
+   return sortedWords.join(' ');
+}
+console.log(order("is2 Thi1s T4est 3a"));
+
+
+
+
+
+function invert(array) {
+  
+   return array.map(number => {
+    return number * -1
+  });
+}
+console.log(invert([1, 2, 3, 4, 5]));
+
+
+
+
+function filter_list(l) {
+  return filter(e => {
+    return typeof e === 'number';
+  })
+}
+console.log(filter_list([1,2,'a','b']));
+
+
 
