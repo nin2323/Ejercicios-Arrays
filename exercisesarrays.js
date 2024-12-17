@@ -683,3 +683,41 @@ const applyCoupon = (cupon, carrito) => {
 };
 console.log(applyCoupon('LOSORNITORRINCOSMOLANUNHUEVO50', shoppingCart6));
 
+
+
+
+
+
+
+/**
+ * Al carrito de la compra de Gutufasio le vamos a aplicar ahora los gastos de envío.
+ * Los gastos de envío dependerán del país y de la región.
+ *  Si el país es españa:
+ *      Si la región es Ceuta, Melilla o Canarias, los gastos de envío serán 2€
+ *      Si la región es otra serán de 1.5€
+ *  Si el país es Francia los gastos de envío serán 500€, porque Gutufasio odia a los franceses y no quiere enviarles nada
+ *  salvo a la región de Alsacia, que está muy bonita en navidad, así que los gastos de envío serán 5€ en ese caso.
+ *  Si el país es Andorra, los gastos de envío serán 100€, ya que no pagan impuestos pues que paguen por el envío.
+ *  En cualquier otro caso los gastos de envío serán 30€
+ */
+
+const shoppingCart7 = [
+  {product: 'botella de agua', cuantity: 7, price: 100},
+  {product: 'bolsa de palomitas', cuantity: 2, price: 127.75},
+  {product: 'azucar', cuantity: 1, price: 1000},
+  {product: 'pan de hamburguesa', cuantity: 728, price: 1.27},
+  {product: 'tofu ahumado', cuantity: 28, price: 79.39}
+];
+
+const shippingCost = (country, state) => {
+  
+  shoppingCart7.forEach(cost => {
+    if (country === 'España' && (state !== 'Melilla' || state !== 'Ceuta' || state !== 'Canarias')) {
+      return shippingCost = totalCart + 1.5;
+    } else if (country === 'España' && (state === 'Melilla' || state === 'Ceuta' || state === 'Canarias')) {
+      return shippingCost = totalCart + 2;
+    }
+  }
+)}
+console.log(shippingCost('España', 'Murcia'));
+
