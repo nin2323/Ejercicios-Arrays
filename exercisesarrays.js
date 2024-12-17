@@ -344,7 +344,7 @@ function wave(str) {
   const charactersCopy = [...characters];
   charactersCopy[index] = char.toUpperCase();
     result.push(charactersCopy.join(''));
-  })
+  });
  console.log(result);
 }
 wave('hello');
@@ -429,19 +429,16 @@ function countSmileys(arr) {
       }
     }
 
-    if (face.length === 3 
+    if (face.length === 3) {
         (face[0] === ':' || face[0] === ';') &&
         (face[1] === '-' || face[1] === '~') &&
         (face[2] === ')' || face[2] === 'D')
-    ) {
         return true;
       }
-        return false;
-    }
+      return false;
   });
-
   return validSmiles.length;
-}
+};
 
 // primer char= : o ;
 // segundo char = -, ~, ), D
@@ -526,7 +523,7 @@ table(1);
  */
 
 const numPar = (num) => {
-  for(let par = 0; par <= 6; par++) {
+  for(let par = 0; par <= num; par++) {
     if(par % 2 === 0)   
     console.log(par)
   }
@@ -564,12 +561,125 @@ countDown(3);
  * Escribe una función que acepte una letra y un número, y el programa mostrará una cadena formada por la letra repetida el número que haya introducido.
  */
 
-const cadena = (letter) => {
-  for(let param = 0; param = 5; param++) {
-    console.log(letter * param)
+const cadena = (letter, num) => {
+  let result = '';
+  for(let param = 0; param < num; param++) {
+    result += letter;
   }
+  console.log(result);
 }
-cadena('h');
+cadena('a', 5);
 
 
+/**
+ * Gutufasio está programando un carrito de la compra y está pensando en como modelar los objetos.
+ * Imagina que en el carrito de la compra hay los siguientes elementos:
+ *  7 botellas de agua - 700€
+ *  2 bolsas de palomitas: 255.5€
+ *  1 kg de azúcar: 1000€
+ *  728 panes de hamburguesa: 928€
+ *  28 kg de tofu ahumado: 2223€
+ * Escribe un array para representar esa información.
+ */
+
+const shoppingCart4 = [
+  {product: 'botella de agua', cuantity: 7, price: 100},
+  {product: 'bolsa de palomitas', cuantity: 2, price: 127.75},
+  {product: 'azucar', cuantity: 1, price: 1000},
+  {product: 'pan de hamburguesa', cuantity: 728, price: 1.27},
+  {product: 'tofu ahumado', cuantity: 28, price: 79.39}
+];
+
+/**
+ * Al carrito vamos a aplicarle los impuestos.
+ * Los impuestos dependerán del país. Gutufasio no sabe mucho de esto y lo único que sabe es que en España
+ * los impuestos son el 21%, salvo en Ceuta, Melilla y Canarias, que no hay impuestos.
+ *
+ * Además, Gutufasio es UX, así que ha decidido poner en la interfaz los impuestos de cada elemento del array
+ * por lo que necesita que en el array, cada elemento tenga, además de su precio, el impuesto.
+ *
+ * Crea una función que se llame calculateTaxes, que acepte dos parámetros de entrada:
+ * - country
+ * - state
+ * La función debe devolver un nuevo array incluyendo el precio con impuestos y el precio total para cada elemento.
+ */
+
+
+const shoppingCart5 = [
+  {product: 'botella de agua', cuantity: 7, price: 100},
+  {product: 'bolsa de palomitas', cuantity: 2, price: 127.75},
+  {product: 'azucar', cuantity: 1, price: 1000},
+  {product: 'pan de hamburguesa', cuantity: 728, price: 1.27},
+  {product: 'tofu ahumado', cuantity: 28, price: 79.39}
+];
+
+
+ const calculateTaxes = (country, state) => {
+   
+    shoppingCart5.forEach(product => {
+      if (country === 'España' && (state !== 'Ceuta' && state !== 'Melilla' && state !== 'Canarias')) {
+        let totalPrice = (product.cuantity * product.price);
+        let priceWithTax = (product.cuantity * product.price) * 1.21;
+        return product.totalPrice = totalPrice, product.priceWithTax = priceWithTax; 
+      }  else if (state === 'Ceuta' || state === 'Melilla' || state === 'Canarias') {
+        let totalPrice = (product.cuantity * product.price);
+        return product.totalPrice = totalPrice;
+      }
+    });
+   return shoppingCart5;   
+ };
+ console.log(calculateTaxes('España', 'Valencia'));
+ 
+ 
+ /**
+ * Gutufasio quiere añadir cupones, porque total, como cobra la botella de agua a 100€, pues se lo puede permitir.
+ *
+ * Los cupones tienen 3 propiedades:
+ * - El código del cupón
+ * - El porcentaje de descuento que tiene
+ * - El mínimo de dinero que tiene que costar el carrito de la compra sin impuestos, para que el cupón aplique
+ *
+ *
+ * Los cupones válidos serán:
+ *  GUTUFACIO10, ROBUSTIO20, LOSORNITORRINCOSMOLANUNHUEVO50
+ *  Los porcentajes de descuento son 10, 20 y 50 respectivamente, y las cantidades mínimas para que funcionen son
+ *  1000€, 20€ y 5000€
+ *
+ * Como ya hemos dicho, Gutufacio le gusta poner toda la información en la interfaz, y quiere poner el precio original de cada
+ * elemento y el precio después de aplicar el cupón.
+ *
+ * La función para comprobar y aplicar un cupón de descuento se llamará applyCoupon y tendrá dos parámetros:
+ *  - El cupón de descuento
+ *  - El array con el carrito de la compra
+ * La función debe devolver el nuevo carrito con el cupón aplicado si es válido
+ *
+ * Nota, el descuento se aplica sobre el precio sin impuestos. Los impuestos se calculan sobre el precio base.
+ */
+
+ 
+ const shoppingCart6 = [
+  {product: 'botella de agua', cuantity: 7, price: 100},
+  {product: 'bolsa de palomitas', cuantity: 2, price: 127.75},
+  {product: 'azucar', cuantity: 1, price: 1000},
+  {product: 'pan de hamburguesa', cuantity: 728, price: 1.27},
+  {product: 'tofu ahumado', cuantity: 28, price: 79.39}
+];
+
+const applyCoupon = (cupon, carrito) => {
+  /* Obtener el precio total de cada item */
+  carrito.forEach(product => {
+    let totalPrice = (product.cuantity * product.price);
+    return product.totalPrice = totalPrice;
+  })
+  
+  /* Obtener el precio total del carrito en un nuevo array */
+  let totalPriceCart = 0;
+  for(item = 0; item < carrito.length; item++) {
+    const prod = carrito[item];
+    totalPriceCart += prod.totalPrice;
+  };
+  const totalCart = [...carrito, {precioTotal: `${totalPriceCart}€`}];
+
+};
+console.log(applyCoupon('LOSORNITORRINCOSMOLANUNHUEVO50', shoppingCart6));
 
