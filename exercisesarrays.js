@@ -875,7 +875,145 @@ function sumArray(array) {
   }
   return sumNum;
 }
-console.log(sumArray([1, 1, 2, 3]));
+console.log(sumArray([1, 4, 2, 3]));
+
+
+
+
+//ejercicios clase repaso
+
+const AVAILABLE_NETWORKS = ['twitter', 'facebook', 'instagram', 'tikTok', 'youtube'];
+
+const CONNECTED_NETWORKS = {
+  twitter: true,
+  facebook: false,
+  instagram: true,
+  tikTok: false,
+  youtube: false
+};
+
+const CONNECTED_NETWORKS_ACCOUNTS = {
+  twitter: 'josmidgg',
+  facebook: undefined,
+  instagram: 'gutufacio',
+  tikTok: undefined,
+  youtube: 'robustio'
+};
+
+function isConnected(network) {
+  return CONNECTED_NETWORKS[network];
+}
+
+
+
+/**
+ * 1. Intenta deducir qué hace el código de arriba y escríbelo aquí.
+ */
+// Devuelve las que estan conectadas con true o false
+
+/**
+ * 2. Crea una función que, dado el nombre de una red social, te diga cual es la cuenta del usuario
+ */
+function nameSocialMedia(nameNetWork) {
+  return CONNECTED_NETWORKS_ACCOUNTS[nameNetWork];
+}
+console.log(nameSocialMedia('youtube'));
+
+/**
+ * 3. Crea una función que, dado un array de redes sociales, te devuelva otro array indicando la red,
+ * si está conectada y con el nombre de usuario si la red está conectada.
+ *
+ * Por ejemplo, con el array ['twitter', 'youtube'], debería devolverte un array
+ * [{ network: 'twitter', isConnected: true, username: 'josmidgg' }, { network: 'youtube', isConnected: false }]
+ */
+const AVAILABLE_NETWORKS = ['twitter', 'facebook', 'instagram', 'tikTok', 'youtube'];
+
+const CONNECTED_NETWORKS = {
+  twitter: true,
+  facebook: false,
+  instagram: true,
+  tikTok: false,
+  youtube: false
+};
+function isConnected(network) {
+  return CONNECTED_NETWORKS[network];
+}
+
+const CONNECTED_NETWORKS_ACCOUNTS = {
+  twitter: 'josmidgg',
+  facebook: undefined,
+  instagram: 'gutufacio',
+  tikTok: undefined,
+  youtube: 'robustio'
+};
+function nameSocialMedia(nameNetWork) {
+  return CONNECTED_NETWORKS_ACCOUNTS[nameNetWork];
+}
+
+
+function checkArray(AVAILABLE_NETWORKS) {
+    return AVAILABLE_NETWORKS.map(socialMedia =>{
+    return {network: socialMedia, isConnected: isConnected(socialMedia), username: nameSocialMedia(socialMedia)}
+  });
+} 
+console.log(checkArray(['twitter', 'facebook', 'instagram', 'tikTok', 'youtube']));
+
+
+/**
+ * 4. modifica la función isConnected y la función del ejercicio 2 para que ignore mayúsculas y salga el
+ * mismo resultado si el usuario pone 'twitter' o 'tWiTter'
+ */
+const AVAILABLE_NETWORKS = ['twitter', 'facebook', 'instagram', 'tikTok', 'youtube'];
+
+const CONNECTED_NETWORKS = {
+  twitter: true,
+  facebook: false,
+  instagram: true,
+  tikTok: false,
+  youtube: false
+};
+function isConnected(network) {
+  return CONNECTED_NETWORKS[network.toLowerCase()];
+}
+
+const CONNECTED_NETWORKS_ACCOUNTS = {
+  twitter: 'josmidgg',
+  facebook: undefined,
+  instagram: 'gutufacio',
+  tikTok: undefined,
+  youtube: 'robustio'
+};
+function nameSocialMedia(nameNetWork) {
+  return CONNECTED_NETWORKS_ACCOUNTS[nameNetWork.toLowerCase()];
+}
+
+
+ function checkArray(AVAILABLE_NETWORKS) {
+    return AVAILABLE_NETWORKS.map(socialMedia =>{
+    return {network: socialMedia.toLowerCase(), isConnected: isConnected(socialMedia), username: nameSocialMedia(socialMedia)}
+  });
+} 
+console.log(checkArray(['tWitter', 'facebook', 'instagram', 'tikTok', 'youtube']));
+
+
+/**
+ * 5. Crea un objeto cuyas propiedades sean la red social con un nombre correcto para javascript y cuyo valor sea el nombre de la
+ * red social. Por ejemplo el valor de la propiedad tikTok sería Tik Tok
+ */
+
+const nameSocialMedia = {
+  twitter: 'X',
+  facebook: 'Faceboock',
+  instagram: 'Instagram',
+  tikTok: 'tik Tok',
+  youtube: 'YouTube'
+};
+
+/**
+ * 6. Crea una función que dado un array de redes sociales, te devuelva la misma información del ejercicio 3
+ * incluyendo el nombre de la red social.
+ */
+
 
 
 
