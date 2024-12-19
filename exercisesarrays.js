@@ -728,7 +728,7 @@ console.log(shippingCost('España', 'Murcia'));
 
 
 
-// kata
+// katas
 
 function order(words){
   const sortedWords = [];
@@ -764,6 +764,118 @@ function filter_list(l) {
   })
 }
 console.log(filter_list([1,2,'a','b']));
+
+
+
+function abbrevName(name){
+ const changeName = name.split(' ');
+ 
+ if (changeName.length >= 2) {
+  return changeName [0] [0].toUpperCase() + '.' + changeName [1] [0].toUpperCase();
+ } else if (changeName === 1) {
+  return changeName [0] [0].toUpperCase()
+ } return '';
+}
+console.log(abbrevName('pepito Gonzalez'));
+
+
+function maskify(numbers) {
+  const changeNumbers = numbers.slice(0, -4);
+  const lastNumbers = numbers.slice(-4);
+
+  const splitNumbers = changeNumbers.split('').map(() => '#').join('');
+  
+
+
+  if (numbers.length <= 4) {
+    return numbers;
+  } else if (numbers.length > 4) {
+    return `${splitNumbers}${lastNumbers}`
+  } return ' ';
+}
+console.log(maskify('1112223'));
+
+
+
+
+function highAndLow(numbers){
+  const arr = numbers.split(' ');
+  const maxNum = Math.max(...arr);
+  const minNum = Math.min(...arr);
+   return `${maxNum} ${minNum}`;
+}
+console.log(highAndLow('1 -5 4 1'));
+
+
+function doubleChar(str) {
+  const arr = str.split('');
+  const letterRepeat = arr.map(char => char.repeat(2)) 
+  return letterRepeat.join('');
+  } 
+console.log(doubleChar('hola me llamo juan'));
+
+
+function sumIntervals(intervals) {
+  let difTotal = 0;
+  intervals.forEach(arr => {
+    let dif = arr[1] - arr[0];
+    return difTotal += dif
+  })
+  return difTotal;
+}
+console.log(sumIntervals([[1, 2],[1, 3], [2, 7]]))
+
+// const applyCoupon = (carrito) => {
+//   /* Obtener el precio total de cada item */
+//   shoppingCart6.forEach(product => {
+//     let totalPrice = (product.cuantity * product.price);
+//     return product.totalPrice = totalPrice;
+//   })
+
+
+
+function accum(s) {
+	let letterRepeat = [];
+  for(let char = 0; char < s.length; char++) {
+    const repetition = s[char].toUpperCase() + s[char].toLowerCase().repeat(char);
+    letterRepeat.push(repetition);
+  }
+  return letterRepeat.join('-');
+};
+console.log(accum('abc'));
+
+
+
+
+
+
+const toJadenCase = function (phrase) {
+  const arr = phrase.split(' ');
+  const capitalLetter = arr.map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase());
+  return capitalLetter.join(' ');
+};
+console.log(toJadenCase('How can mirrors be real if our eyes arent real'));
+
+
+
+function sumArray(array) {
+  if (array <= 2) {
+    return 0;
+  } else if (!array.every(Number.isFinite)) {
+    return 0;
+  }
+
+  let maxNum = Math.max(...array);
+  let minNum = Math.min(...array);
+
+  let sumNum = 0;
+  for(let num = 0; num < array.length; num++) {
+    if (array[num] !== maxNum && array[num] !== minNum)
+    sumNum += array[num]
+  }
+  return sumNum;
+}
+console.log(sumArray([1, 1, 2, 3]));
 
 
 
